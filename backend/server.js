@@ -1,29 +1,30 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const path = require('path')
 const User = require('./models/userModel')
-const routes = require('./routes/routes.js');
+const routes = require('./routes/routes');
  
-const { DB_URL, PORT, JWT_SECRET } = require('./db/db.config')
+const { PORT, JWT_SECRET } = require('./database/db')
 
 /*require("dotenv").config({
  path: path.join(__dirname, "../.env")
 }); */
  
-mongoose
+/*mongoose
  .connect(DB_URL,{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
  .then(() => {
   console.log('Connected to the Database successfully');
- });
+ }); */
 
 
 const app = express();
  
 //const PORT = process.env.PORT || 3000;
  
-  
+app.use(cors());  
+
 app.use(bodyParser.urlencoded({ extended: true }));
  
 app.use(async (req, res, next) => {
@@ -42,6 +43,9 @@ app.use(async (req, res, next) => {
  
 app.use('/', routes); 
 
+app.use('/static', express.static(path.join(`${__dirname}/public`)));
+
+app.get('/', (req, res) => res.send('Home Route'));
 
 //Connecting with Backend
 app.post('/backend', (req, res) => { 
