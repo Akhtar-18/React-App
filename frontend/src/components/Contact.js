@@ -4,13 +4,14 @@ import {Form, Button, Container, Row, Col, FormLabel, FormCheck, FormControl} fr
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavigationBar from './NavigationBar';
-import Login from './Login';
-import Register from './Register';
 
-function Home(){
+
+function Contact(){
     return(
-            <NavigationBar />
+        <div>
+            This is Contact Page
+        </div>
     );
 }
 
-export default Home;
+export default Contact;

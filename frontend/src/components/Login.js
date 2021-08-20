@@ -1,30 +1,52 @@
 import React, { Component } from 'react';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Container, Row, Col, FormLabel, FormCheck, FormControl} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavigationBar from './NavigationBar';
 
 function Login() {
         return(
-            <Form>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
+          <div>
+            <NavigationBar/>
+            <Container className="col-md-5">
+              <Form>
+                <br/>
+  <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+    <FormLabel column sm={2}>
+      Email
+    </FormLabel>
+    <Col sm={10}>
+      <Form.Control type="email" placeholder="Email" />
+    </Col>
   </Form.Group>
 
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
+  <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+    <FormLabel column sm={2}>
+      Password
+    </FormLabel>
+    <Col sm={10}>
+      <Form.Control type="password" placeholder="Password" />
+    </Col>
   </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
+  
+  
+  <Form.Group as={Row} className="mb-3 justify-content-start">
+    <Col sm={{ span: 2, offset: 2 }}>
+      <FormCheck id="inlineFormInputGroup" type="checkbox" label="Remember" />
+    </Col>
   </Form.Group>
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
+
+  <Form.Group as={Row} className="mb-3">
+    <Col sm={{ span: 10, offset: 2 }}>
+      <Button type="submit">Sign in</Button>
+    </Col>
+  </Form.Group>
 </Form>
+              
+          </Container>
+          </div>
+          
+            
         );
 }
 
